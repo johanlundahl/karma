@@ -1,0 +1,39 @@
+(% extends 'base-plain.html' %)
+
+(% block head_title %) Tackar (% endblock %)
+
+(% block body_content %)
+<form action="/users/(( user.name ))/jobs" method="POST">
+
+<div class="container text-center centered">  
+	<h1 class="display-1"><i class="far fa-grin"></i></h1>
+	<h1>Hej (( user.name ))!</h1>
+</div>  
+
+<div class="container">
+	<p class="lead">Jag har... </p>
+</div>  
+
+<div class="container">
+	(% for jobtype in jobtypes %)
+	<div class="form-check">
+	  <input class="form-check-input" type="radio" name="jobType" id="flexRadioDefault((jobtype))" value="((jobtype.name))">
+	  <label class="form-check-label" for="flexRadioDefault((jobtype.name))">
+	    (( jobtype.value ))
+	  </label>
+	</div>
+	(% endfor %)
+</div>
+
+<div class="container">
+	<p></p>
+	<button type="submit" class="form-control form-control-lg system-color">Registrera</button>
+</div> 
+</form>
+
+<div class="container">
+
+  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg">Gå tillbaka</a>
+
+</div>
+(% endblock %)

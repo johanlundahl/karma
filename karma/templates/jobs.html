@@ -1,0 +1,28 @@
+(% extends 'base-plain.html' %)
+
+(% block head_title %) Tackar (% endblock %)
+
+(% block body_content %)
+  
+<div class="container text-center centered">  
+	<h1 class="display-1"><i class="far fa-heart"></i></h1>
+	<h1><span class="text-capitalize">(( user.name ))'s</span> sida</h1>
+</div>
+
+<div class="container">
+	<p class="lead">
+  		Du har gjort (( user.jobs|length )) jobb.
+	</p>
+</div>
+
+<div class="container">  
+	(% if user.jobs|length > 0 %)
+	<h4>Mina jobb</h4>
+	(% endif %)
+
+	(% for job in user.jobs %)
+	<p class="lead">(( job.jobtype.value )) - (( job.created ))</p>
+	(% endfor %)
+</div>  
+
+(% endblock %)

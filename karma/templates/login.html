@@ -1,0 +1,28 @@
+(% extends 'base-plain.html' %)
+
+(% block head_title %) logga in (% endblock %)
+
+(% block body_content %)
+
+<form action="/login" method="POST">
+  
+<div class="container text-center centered">  
+  	<div class="row mt-2">
+		<div class="col">
+    		<input class="form-control form-control-lg" name="username" type="text" placeholder="användarnamn">
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col">
+    		<input class="form-control form-control-lg" name="password" type="password" placeholder="lösenord">
+    	</div>
+	</div>
+
+	<div class="row mt-2">
+		<div class="col">
+			<button type="submit" class="form-control form-control-lg system-color">Logga in</button>
+		</div>
+	</div>  
+</div>  
+</form>
+(% endblock %)

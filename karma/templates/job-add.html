@@ -1,0 +1,23 @@
+(% extends 'base-plain.html' %)
+
+(% block head_title %) Tackar (% endblock %)
+
+(% block body_content %)
+<form action="/users/(( user.name ))/jobs" method="POST">
+
+<div class="container text-center centered">  
+	<h1 class="display-1"><i class="far fa-grin"></i></h1>
+	<h1>Hej (( user.name ))!</h1>
+</div>  
+
+<div class="container">
+	<p class="lead">Har du hjälpt med (( jobtype ))?</p>
+</div>  
+
+<div class="container">
+	<input type="hidden" id="jobType" name="jobType" value="(( jobtype ))">
+	<button type="submit" class="form-control form-control-lg system-color">Ja, det har jag</button>
+</div>  
+
+</form>
+(% endblock %)
