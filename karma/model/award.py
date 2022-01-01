@@ -1,4 +1,4 @@
-from datatime import datetime
+from datetime import datetime
 from sqlalchemy.orm import relationship
 from karma.database import db
 

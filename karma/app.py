@@ -5,6 +5,7 @@ from karma.flask_app import FlaskApp
 from karma.database import db
 from karma.model.job import Job, JobType, JobConverter
 from karma.model.user import User
+from karma.model.award import Award
 
 
 app = FlaskApp(__name__)

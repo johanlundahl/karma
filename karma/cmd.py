@@ -2,6 +2,8 @@ from argparse import ArgumentParser
 import os
 from karma.app import app, db
 from karma.model.user import User
+from karma.model.job import Job
+from karma.model.award import Award
 
 
 if __name__ == '__main__':
