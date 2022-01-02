@@ -4,30 +4,31 @@
 
 (% block body_content %)
 
-<div class="container sticky-top text-center">
+<!--div class="container sticky-top text-center">
   	<h2><a href="/users/(( user.name ))" class="logo">Karma</a></h2>
+</div-->
+
+<div class="container centered">
+	
+	<div class="container text-center">  
+		<h1 class="display-1"><i class="far fa-grin"></i></h1>
+		<h1></h1>
+	</div>  
+
+	<div class="container">
+		<p class="lead"><span class="text-capitalize">(( user.name ))</span>, vad är det du har gjort?</p>
+	</div>  
+
+	<div class="container">
+		(% for jobtype in jobtypes %)
+		<a href="/jobs/(( jobtype.name ))/add" class="btn btn-primary btn-lg btn-block">(( jobtype.value ))</a>
+		(% endfor %)
+	</div>
+
 </div>
-
-
-<form action="/users/(( user.name ))/jobs" method="POST">
-
-<div class="container text-center centered">  
-	<h1 class="display-1"><i class="far fa-grin"></i></h1>
-	<h1><span class="text-capitalize">(( user.name ))</span>,</h1>
-</div>  
-
-<div class="container">
-	<p class="lead">Har du... </p>
-</div>  
-
-<div class="container">
-	(% for jobtype in jobtypes %)
-	<a href="/jobs/(( jobtype.name ))/add" class="btn btn-primary btn-lg btn-block">(( jobtype.value ))</a>
-	(% endfor %)
-</div>
-
 
 <div class="container fixed-bottom">
-  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg">Gå tillbaka</a>
+  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg"><i class="fas fa-arrow-circle-left"></i> Gå tillbaka</a>
 </div>
+
 (% endblock %)

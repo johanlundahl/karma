@@ -57,7 +57,7 @@ def logout():
     with db:
         db.add(user)
     logout_user()
-    return render_template("logged-out.html")
+    return redirect(url_for("login"))
 
 
 @auth.unauthorized_handler

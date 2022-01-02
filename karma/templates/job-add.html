@@ -3,24 +3,29 @@
 (% block head_title %) Tackar (% endblock %)
 
 (% block body_content %)
-<form action="/users/(( user.name ))/jobs" method="POST">
 
-<div class="container text-center centered">  
-	<h1 class="display-1"><i class="far fa-grin"></i></h1>
-	<h1>Hej (( user.name ))!</h1>
-</div>  
+<div class="container centered">
 
-<div class="container">
-	<p class="lead">Har du hjälpt med (( jobtype.value ))?</p>
-</div>  
+	<form action="/users/(( user.name ))/jobs" method="POST">
 
-<div class="container">
-	<input type="hidden" id="jobType" name="jobType" value="(( jobtype ))">
-	<button type="submit" class="btn btn-primary btn-lg btn-block">Ja, det har jag</button>
-</div>  
+		<div class="container text-center">  
+			<h1 class="display-1"><i class="far fa-grin-hearts"></i></h1>
+			<h1></h1>
+		</div>  
 
-<div class="container">
-  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg">Gå tillbaka</a>
+		<div class="container">
+			<p class="lead">Har du hjälpt med (( jobtype.value ))?</p>
+		</div>  
+
+		<div class="container">
+			<input type="hidden" id="jobType" name="jobType" value="(( jobtype ))">
+			<button type="submit" class="btn btn-primary btn-lg btn-block">Ja, det har jag</button>
+		</div>  
+	</form>
 </div>
-</form>
+
+<div class="container fixed-bottom">
+  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg"><i class="fas fa-arrow-circle-left"></i> Gå tillbaka</a>
+</div>
+
 (% endblock %)

@@ -1,12 +1,13 @@
-(% extends 'base-plain.html' %)
+(% extends 'base-nav.html' %)
 
 (% block head_title %) logga in (% endblock %)
 
 (% block body_content %)
 
+<div class="container text-center centered">  
+
 <form action="/login" method="POST">
   
-<div class="container text-center centered">  
   	<div class="row mt-2">
 		<div class="col">
     		<input class="form-control form-control-lg" name="username" type="text" placeholder="användarnamn">
@@ -23,6 +24,6 @@
 			<button type="submit" class="btn btn-primary btn-lg btn-block">Logga in</button>
 		</div>
 	</div>  
-</div>  
 </form>
+</div>  
 (% endblock %)

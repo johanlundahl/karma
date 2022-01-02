@@ -4,23 +4,25 @@
 
 (% block body_content %)
 
-<div class="container text-center centered">  
-	<h1 class="display-1"><i class="far fa-grin-stars"></i></h1>
-  	<h1>Hej <span class="text-capitalize">(( user.name ))</span></h1>
-</div>
+<div class="container centered">
+	<div class="container text-center">  
+		<h1 class="display-1"><i class="far fa-grin-stars"></i></h1>
+	  	<h1>Hej <span class="text-capitalize">(( user.name ))</span></h1>
+	</div>
 
-<div class="container">
-  	<p class="lead">
-  		Här kan du registrera jobb och samla hjärtan. För varje hjärta du tjänar kan du köpa extra skärmtid. Bra va!
-	</p>
-</div>
-<div class="container">
-  	<p class="lead">
-  		Du har (( user.score )) <i class="far fa-heart"></i>
-	</p>
-</div>
+	<div class="container">
+	  	<p class="lead">
+	  		Här kan du registrera jobb och samla hjärtan. För varje hjärta du tjänar kan du köpa extra skärmtid. Bra va!
+		</p>
+	</div>
+	<div class="container">
+	  	<p class="lead">
+	  		Du har (( user.score )) <i class="far fa-heart"></i>
+		</p>
+	</div>
 
-<div>
-  	<a href="/users/(( user.name ))/jobs/register" class="btn btn-link btn-lg">Registrera jobb</a>
+	<div>
+	  	<a href="/users/(( user.name ))/jobs/register" class="btn btn-link btn-lg">Registrera jobb</a>
+	</div>
 </div>
 (% endblock %)
