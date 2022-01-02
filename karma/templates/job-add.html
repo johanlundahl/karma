@@ -11,13 +11,16 @@
 </div>  
 
 <div class="container">
-	<p class="lead">Har du hjälpt med (( jobtype ))?</p>
+	<p class="lead">Har du hjälpt med (( jobtype.value ))?</p>
 </div>  
 
 <div class="container">
 	<input type="hidden" id="jobType" name="jobType" value="(( jobtype ))">
-	<button type="submit" class="form-control form-control-lg system-color">Ja, det har jag</button>
+	<button type="submit" class="btn btn-primary btn-lg btn-block">Ja, det har jag</button>
 </div>  
 
+<div class="container">
+  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg">Gå tillbaka</a>
+</div>
 </form>
 (% endblock %)
