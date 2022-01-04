@@ -1,5 +1,7 @@
 from sqlalchemy.orm import relationship
 from karma.database import db
+from karma.model.job import Job
+from karma.model.award import Award
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
@@ -12,14 +14,21 @@ class User(db.Model):
     name = db.Column(db.String(250), nullable=False)
     password_hash = db.Column(db.String(250), nullable=False)
     authenticated = db.Column(db.Boolean, default=False)
+    is_admin = db.Column(db.Boolean, default=False)
 
-    def __init__(self, name, password):
+    def __init__(self, name, password, is_admin=False):
         self.name = name
         self.password = password
         self.id = None
+        self.is_admin = is_admin
 
-    def add(self, job):
-        self.jobs.append(job)
+    def add(self, thing):
+        if isinstance(thing, Job):
+            self.jobs.append(thing)
+        elif isinstance(thing, Award):
+            self.awards.append(thing)
+        else:
+            raise Exception
 
     @property
     def score(self):
