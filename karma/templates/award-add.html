@@ -6,7 +6,7 @@
 
 <div class="container centered">
 
-	<form action="/users/(( user.name ))/jobs" method="POST">
+	<form action="/users/(( user.name ))/awards" method="POST">
 
 		<div class="container text-center">  
 			<h1 class="display-1"><i class="far fa-grin-hearts"></i></h1>
@@ -14,12 +14,11 @@
 		</div>  
 
 		<div class="container">
-			<p class="lead">Har du hjälpt med (( jobtype.value ))?</p>
+			<p class="lead">Lägg till belöning för (( user.name ))?</p>
 		</div>  
 
 		<div class="container">
-			<input type="hidden" id="jobType" name="jobType" value="(( jobtype ))">
-			<button type="submit" class="btn btn-primary btn-lg btn-block">Ja, det har jag</button>
+			<button type="submit" class="btn btn-primary btn-lg btn-block">Ja</button>
 		</div>  
 	</form>
 </div>

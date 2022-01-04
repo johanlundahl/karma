@@ -1,0 +1,25 @@
+(% extends 'base-plain.html' %)
+
+(% block head_title %) Användare (% endblock %)
+
+(% block body_content %)
+
+<div class="container centered">
+
+	<div class="container text-center">  
+		<h1 class="display-1"><i class="far fa-heart"></i></h1>
+		<h1>Användare</h1>
+	</div>
+
+	<div class="container">  
+		(% for user in users %)
+		
+		<a href="/users/(( user.name ))" class="btn btn-link btn-lg btn-block">(( user.name ))
+			(% if user.is_admin %)
+			*
+			(% endif %)
+		</a> 
+		(% endfor %)
+	</div>  
+</div>
+(% endblock %)

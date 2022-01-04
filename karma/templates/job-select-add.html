@@ -4,9 +4,6 @@
 
 (% block body_content %)
 
-<!--div class="container sticky-top text-center">
-  	<h2><a href="/users/(( user.name ))" class="logo">Karma</a></h2>
-</div-->
 
 <div class="container centered">
 	
@@ -21,14 +18,14 @@
 
 	<div class="container">
 		(% for jobtype in jobtypes %)
-		<a href="/jobs/(( jobtype.name ))/add" class="btn btn-primary btn-lg btn-block">(( jobtype.value ))</a>
+		<a href="/users/(( user.name ))/jobs/(( jobtype ))" class="btn btn-primary btn-lg btn-block">(( jobtype.value ))</a>
 		(% endfor %)
 	</div>
 
 </div>
 
 <div class="container fixed-bottom">
-  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg"><i class="fas fa-arrow-circle-left"></i> Gå tillbaka</a>
+  	<a href="/users/(( user.name ))" class="btn btn-secondary btn-lg btn-block">Gå tillbaka</a>
 </div>
 
 (% endblock %)

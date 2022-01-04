@@ -16,13 +16,28 @@
 		</p>
 	</div>
 	<div class="container">
-	  	<p class="lead">
-	  		Du har (( user.score )) <i class="far fa-heart"></i>
-		</p>
+	  	<div class="row">
+    		<div class="col text-center">
+    			<h1><i class="fas fa-heart"></i> (( user.jobs|length - user.awards|length ))</h1>
+    		</div>
+    		<div class="col text-center">
+    			<h1><i class="fas fa-mobile-alt"></i> (( user.awards|length ))</h1>
+    		</div>	
+    	</div>
+    	<div class="row">
+    		<div class="col">
+    			<p>Hjärtan som du kan byta mot skärmtid.</p>
+    		</div>
+    		<div class="col">
+    			<p>Antal skärmtid som du fått.</p>
+    		</div>
+    	</div>
 	</div>
-
-	<div>
-	  	<a href="/users/(( user.name ))/jobs/register" class="btn btn-link btn-lg">Registrera jobb</a>
-	</div>
+</div>
+<div class="container fixed-bottom">
+	  	<a href="/users/(( user.name ))/jobs/register" class="btn btn-primary btn-lg btn-block">Lägg till jobb</a>
+	  	(% if viewer.is_admin %)
+	  	<a href="/users/(( user.name ))/awards/register" class="btn btn-primary btn-lg btn-block">Lägg till belöning</a>
+	  	(% endif %)
 </div>
 (% endblock %)

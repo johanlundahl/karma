@@ -1,0 +1,56 @@
+(% macro sensor_submenu(url, name) -%)
+
+<div class="topnav bg-light my-topnav plain_text">
+	<a href="/v2/(( name ))/latest" (% if '/latest' in url %)class="active"(% endif %)>Today</a>
+	<a href="/v2/(( name ))/week" (% if '/week' in url %)class="active"(% endif %)>Week</a>
+	<a href="/v2/(( name ))/month" (% if '/month' in url %)class="active"(% endif %)>Month</a>
+</div>
+
+(%- endmacro %)
+
+
+(% macro solar_submenu(url, name) -%)
+
+<div class="topnav bg-light my-topnav plain_text">
+	<a href="/v2/(( name ))/today" (% if '/today' in url %)class="active"(% endif %)>Today</a>
+	<a href="/v2/(( name ))/month" (% if '/month' in url %)class="active"(% endif %)>Month</a>
+	<a href="/v2/(( name ))/year" (% if '/year' in url %)class="active"(% endif %)>Year</a>
+</div>
+
+(%- endmacro %)
+
+
+(% macro application_submenu(url, name) -%)
+
+<div class="topnav bg-light my-topnav plain_text">
+	<a href="/application/storage" (% if '/storage' in url %)class="active"(% endif %)>Storage</a>
+	<a href="/application/logs" (% if '/logs' in url %)class="active"(% endif %)>Logs</a>
+</div>
+
+(%- endmacro %)
+
+
+(% macro back_to(url) -%)
+
+<h1>
+  <a href="(( url ))"><i class="fas fa-arrow-left my-title-arrow"></i></a>
+</h1>
+
+(%- endmacro %)
+
+
+(% macro prev_next(url_prev, title, url_next) -%)
+<div class="row">
+	<div class="col">
+	  <a href="((url_prev))"><i class="fas fa-chevron-left nav-arrows"></i></a>
+	</div>
+	<div class="col-7">
+	  <b> (( title )) </b>
+	</div>
+	<div class="col">
+	  <a href="((url_next))"><i class="fas fa-chevron-right nav-arrows"></i></a>
+	</div>
+</div>
+      
+(%- endmacro %)
+
