@@ -78,19 +78,39 @@ def user_authorization(func):
         if 'username' not in kwargs:
             return abort(400)
         username = kwargs['username']
-        if username != user.name:
+        if username != user.name and not user.is_admin:
             return abort(401)
         return func(*args, **kwargs)
     wrapper.__name__ = func.__name__
     return wrapper
 
 
+def admin_authorization(func):
+    def wrapper(*args, **kwargs):
+        user = current_user
+        if not user.is_admin:
+            return abort(401)
+        return func(*args, **kwargs)
+    wrapper.__name__ = func.__name__
+    return wrapper
+
+
+@app.route('/users', methods=['GET'])
+@login_required
+@admin_authorization
+def users():
+    with db:
+        users = db.get(User).all()
+        return render_template("users.html", users=users)
+
+
 @app.route('/users/<username>', methods=['GET'])
 @login_required
 @user_authorization
 def user(username):
-    user = current_user
-    return render_template("user.html", user=user)
+    with db:
+        user = db.get(User).where(User.name, username).first()
+        return render_template("user.html", user=user, viewer=current_user)
 
 
 @app.route('/users/<username>/awards', methods=['GET', 'POST'])
@@ -98,13 +118,23 @@ def user(username):
 @user_authorization
 def awards(username):
     if request.method == 'GET':
-        return render_template('awards.html', user=current_user)
-    elif request.method == 'POST':
-        job_done = request.form['jobType']
         with db:
-            user = current_user
-            user.add(Job(JobType.parse(job_done)))
-        return redirect(url_for("job_added", username=username))
+            user = db.get(User).where(User.name, username).first()
+            return render_template('awards.html', user=user)
+    elif request.method == 'POST':
+        with db:
+            user = db.get(User).where(User.name, username).first()
+            user.add(Award())
+        return redirect(url_for("awards", username=username))
+
+
+@app.route('/users/<username>/awards/register', methods=['GET', 'POST'])
+@login_required
+@admin_authorization
+def register_award_for_user(username):
+    with db:
+        user = db.get(User).where(User.name, username).first()
+        return render_template('award-add.html', user=user)
 
 
 @app.route('/users/<username>/jobs', methods=['GET', 'POST'])
@@ -112,38 +142,44 @@ def awards(username):
 @user_authorization
 def jobs(username):
     if request.method == 'GET':
-        return render_template('jobs.html', user=current_user)
+        with db:
+            user = db.get(User).where(User.name, username).first()
+            return render_template('jobs.html', user=user)
     elif request.method == 'POST':
         job_done = request.form['jobType']
         with db:
-            user = current_user
+            user = db.get(User).where(User.name, username).first()
             user.add(Job(JobType.parse(job_done)))
-        return redirect(url_for("job_added", username=username))
+            return redirect(url_for("job_added", username=username))
 
 
 @app.route('/users/<username>/jobs/added', methods=['GET'])
 @login_required
 @user_authorization
 def job_added(username):
-    return render_template('job-done.html', user=current_user)
+    with db:
+        user = db.get(User).where(User.name, username).first()
+        return render_template('job-done.html', user=user)
 
 
 @app.route('/users/<username>/jobs/<jobtype:job>', methods=['GET'])
 @login_required
 @user_authorization
 def add_job_for_user(username, job):
-    user = current_user
-    return render_template('job-add.html', user=user, jobtype=job)
+    with db:
+        user = db.get(User).where(User.name, username).first()
+        return render_template('job-add.html', user=user, jobtype=job)
 
 
 @app.route('/users/<username>/jobs/register', methods=['GET'])
 @login_required
 @user_authorization
 def register_job_for_user(username):
-    user = current_user
-    # DISPLAY JOBS TO REGISTER
-    jobtypes = [choice for choice in JobType]
-    return render_template('job-select-add.html', user=user, jobtypes=jobtypes)
+    with db:
+        user = db.get(User).where(User.name, username).first()
+        jobtypes = [choice for choice in JobType]
+        return render_template('job-select-add.html',
+                               user=user, jobtypes=jobtypes)
 
 
 @app.route('/jobs/<jobtype:job>/add', methods=['GET'])
@@ -158,22 +194,26 @@ def add_job(job):
 
 @app.errorhandler(404)
 def not_found(e):
-    return render_template("404.html"), 404
+    return render_template("error-code.html",
+                           response_status='404 not found'), 404
 
 
 @app.errorhandler(400)
 def bad_request(e):
-    return render_template("400.html"), 400
+    return render_template("error-code.html",
+                           response_status='400 bad request'), 400
 
 
 @app.errorhandler(401)
 def not_authorized(e):
-    return render_template("401.html"), 400
+    return render_template("error-code.html",
+                           response_status='401 not authorized'), 401
 
 
 @app.errorhandler(500)
 def server_error(e):
-    return render_template("500.html"), 500
+    return render_template("error-code.html",
+                           response_status='500 server error'), 500
 
 
 if __name__ == '__main__':

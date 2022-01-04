@@ -2,8 +2,8 @@ from argparse import ArgumentParser
 import os
 from karma.app import app, db
 from karma.model.user import User
-from karma.model.job import Job
-from karma.model.award import Award
+from karma.model.job import Job         # noqa: F401
+from karma.model.award import Award     # noqa: F401
 
 
 if __name__ == '__main__':
@@ -18,6 +18,7 @@ if __name__ == '__main__':
                                  'with from disk.')
     user.add_argument('username')
     user.add_argument('password')
+    user.add_argument('--admin', action='store_true')
 
     args = parser.parse_args()
 
@@ -29,7 +30,8 @@ if __name__ == '__main__':
         if os.path.exists(db_file):
             os.remove(db_file)
     if args.action == 'add-user':
+        print(f'Adding {args.username} as admin={args.admin}')
         with app.app_context():
             with db:
-                user = User(args.username, args.password)
+                user = User(args.username, args.password, args.admin)
                 db.add(user)
