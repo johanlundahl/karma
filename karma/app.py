@@ -125,7 +125,7 @@ def awards(username):
         with db:
             user = db.get(User).where(User.name, username).first()
             user.add(Award())
-        return redirect(url_for("awards", username=username))
+        return redirect(url_for("user", username=username))
 
 
 @app.route('/users/<username>/awards/register', methods=['GET', 'POST'])
