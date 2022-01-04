@@ -1,0 +1,50 @@
+
+(% macro user_name(user) -%)
+<span class="text-capitalize">(( user.name ))</span>
+(%- endmacro %)
+
+
+(% macro user_score(user) -%)
+<span><i class="far fa-heart"></i> (( user.score ))</span>
+(%- endmacro %)
+
+
+(% macro user_awards(user) -%)
+<span>(( award_icon() )) (( user.awards|length ))</span>
+(%- endmacro %)
+
+(% macro user_jobs(user) -%)
+<span><i class="fas fa-people-carry"></i> (( user.jobs|length ))</span>
+(%- endmacro %)
+
+
+(% macro job_icon(user) -%)
+<i class="fas fa-people-carry"></i>
+(%- endmacro %)
+
+
+(% macro award_icon(user) -%)
+<i class="fas fa-mobile-alt"></i>
+(%- endmacro %)
+
+
+(% macro status_icon(user) -%)
+	(% if user.score < 0 %)
+		<i class="far fa-grimace"></i>
+	(% endif%)
+	(% if user.score == 0 %)
+		<i class="far fa-flushed"></i>
+	(% endif%)
+	(% if user.score == 1 %)
+		<i class="far fa-grin"></i>
+	(% endif%)
+	(% if user.score == 2 %)
+		<i class="far fa-grin-stars"></i>
+	(% endif%)	
+	(% if user.score == 3 %)
+		<i class="far fa-grin-hearts"></i>
+	(% endif%)
+	(% if user.score > 3 %)
+		<i class="fas fa-medal"></i>
+	(% endif%)
+(%- endmacro %)
