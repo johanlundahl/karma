@@ -72,6 +72,12 @@ def entry():
     return redirect(f'/users/{user.name}')
 
 
+@app.route('/favicon.ico', methods=['GET'])
+@login_required
+def favicon():
+    return '', 200
+
+
 def user_authorization(func):
     def wrapper(*args, **kwargs):
         user = current_user
@@ -101,7 +107,8 @@ def admin_authorization(func):
 def users():
     with db:
         users = db.get(User).all()
-        return render_template("users.html", users=users)
+        user = current_user
+        return render_template("users.html", user=user, users=users)
 
 
 @app.route('/users/<username>', methods=['GET'])
