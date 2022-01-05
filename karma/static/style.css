@@ -35,6 +35,7 @@ a:active {
   transform: translate(-50%, -50%);
 }
 
+
 .my-topnav a {
   color: #444444; /*#f2f2f2*/
   text-align: center;
@@ -53,6 +54,13 @@ a:active {
   font-weight: bold;
 }
 
+.my-btn {
+  z-index: 100;
+}
+
+.my-container {
+  overflow: visible;
+}
 
 
 .my-navbar-toggler:focus,
@@ -62,7 +70,7 @@ a:active {
   outline: none;
   padding: 5px;
   margin: 10px;
-  z-index: 1000;
+  z-index: 10001;
 }
 
 .my-topnav {

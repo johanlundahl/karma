@@ -2,11 +2,21 @@
 
 (% block body_content %)
 
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    KaRmA
-  </a>
-</nav>
+    <nav class="navbar bg-white navbar-default my-navbar">
+      <span class="navbar-brand">(% block navigation_title %)(% endblock %)</span>
+      <button class="navbar-toggler my-navbar-toggler" 
+        type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+        aria-controls="collapsibleNavbar" aria-expanded="false" 
+        aria-label="Toggle navigation" onclick="toggleNav()">
+        <span><i class="fas fa-bars menu-icon text-dark"></i></span>
+      </button>
+      <div id="myNav" class="overlay">
+        <div class="overlay-content">
+          <a class="nav-link" href="/users/(( user.name ))">Min sida</a>
+          <a class="nav-link" href="/logout">Logga ut</a>
+        </div>
+      </div>
+    </nav>
 
     <div class="container-fluid my-page-container">
       (% block page_content %) (% endblock %)

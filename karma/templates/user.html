@@ -1,6 +1,6 @@
 (% extends "base-nav.html" %)
 
-(% block body_content %)
+(% block page_content %)
 
 <div class="container centered">
 	<div class="container text-center my-title">  
@@ -32,10 +32,12 @@
     	</div>
 	</div>
 </div>
-<div class="container fixed-bottom">
+
+	<div class="container fixed-bottom my-container">
 	  	<a href="/users/(( user.name ))/jobs/register" class="btn btn-primary btn-lg btn-block">Lägg till jobb</a>
 	  	(% if viewer.is_admin %)
 	  	<a href="/users/(( user.name ))/awards/register" class="btn btn-primary btn-lg btn-block">Lägg till skärmtid</a>
 	  	(% endif %)
 </div>
+
 (% endblock %)
