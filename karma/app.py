@@ -202,25 +202,29 @@ def add_job(job):
 @app.errorhandler(404)
 def not_found(e):
     return render_template("error-code.html",
-                           response_status='404 not found'), 404
+                           response_status='404 not found',
+                           user=current_user), 404
 
 
 @app.errorhandler(400)
 def bad_request(e):
     return render_template("error-code.html",
-                           response_status='400 bad request'), 400
+                           response_status='400 bad request',
+                           user=current_user), 400
 
 
 @app.errorhandler(401)
 def not_authorized(e):
     return render_template("error-code.html",
-                           response_status='401 not authorized'), 401
+                           response_status='401 not authorized',
+                           user=current_user), 401
 
 
 @app.errorhandler(500)
 def server_error(e):
     return render_template("error-code.html",
-                           response_status='500 server error'), 500
+                           response_status='500 server error',
+                           user=current_user), 500
 
 
 if __name__ == '__main__':
