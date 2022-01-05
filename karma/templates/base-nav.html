@@ -1,25 +1,40 @@
 (% extends "base-plain.html" %)
 
+
 (% block body_content %)
+    <div class="h-100 d-flex flex-column px-2">
+      <div class="flex-column justify-content-center px-2 flex-grow-1 overflow-auto">
 
-    <nav class="navbar bg-white navbar-default my-navbar">
-      <span class="navbar-brand">(% block navigation_title %)(% endblock %)</span>
-      <button class="navbar-toggler my-navbar-toggler" 
-        type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
-        aria-controls="collapsibleNavbar" aria-expanded="false" 
-        aria-label="Toggle navigation" onclick="toggleNav()">
-        <span><i class="fas fa-bars menu-icon text-dark"></i></span>
-      </button>
-      <div id="myNav" class="overlay">
-        <div class="overlay-content">
-          <a class="nav-link" href="/users/(( user.name ))">Min sida</a>
-          <a class="nav-link" href="/logout">Logga ut</a>
-        </div>
+        <!-- menu -->
+        <nav class="navbar sticky-top bg-white navbar-default my-navbar">
+          <span class="navbar-brand">(% block navigation_title %)(% endblock %)</span>
+          <button class="navbar-toggler my-navbar-toggler" 
+            type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
+            aria-controls="collapsibleNavbar" aria-expanded="false" 
+            aria-label="Toggle navigation" onclick="toggleNav()">
+            <span><i class="fas fa-bars menu-icon text-dark"></i></span>
+          </button>
+          <div id="myNav" class="overlay">
+            <div class="overlay-content">
+              (% if user is defined %)
+              <a class="nav-link" href="/users/(( user.name ))">Min sida</a>
+              <a class="nav-link" href="/logout">Logga ut</a>
+              (% endif %)
+            </div>
+          </div>
+        </nav>
+
+        <!-- main content of page -->
+        (% block page_content %) (% endblock %)
+
       </div>
-    </nav>
+      <div class="flex-column justify-content-center px-2" style="margin-bottom: 5px;">
+        <div class="p-0">
 
-    <div class="container-fluid my-page-container">
-      (% block page_content %) (% endblock %)
+          <!-- footer of page -->
+          (% block footer_content %) (% endblock %)
+
+        </div>
+      </div>        
     </div>
-
 (% endblock %)

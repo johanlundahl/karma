@@ -1,9 +1,10 @@
 (% extends "base-nav.html" %)
 
+
 (% block head_title %) Ooops! (% endblock %)
 
-(% block page_content %)
 
+(% block page_content %)
 <div class="container centered">
 	<div class="container text-center">  
 		<h1 class="display-1"><i class="far fa-dizzy"></i></h1>
@@ -16,4 +17,11 @@
 		</p>
 	</div>
 </div>
+(% endblock %)
+
+
+(% block footer_content %)
+	(% if user is defined %)
+  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg btn-block">Till min sida</a>
+	(% endif %)
 (% endblock %)

@@ -1,31 +1,25 @@
 (% extends "base-nav.html" %)
 
-(% block head_title %) Tackar (% endblock %)
 
 (% block page_content %)
-
-<div class="container centered">
-
+<div class="container">
 	<form action="/users/(( user.name ))/jobs" method="POST">
-
 		<div class="container text-center">  
 			<h1 class="display-1">(( job_icon() ))</h1>
 			<h1></h1>
 		</div>  
-
-		<div class="container">
+		<div class="container text-center">
 			<p class="lead">Har du hjälpt med (( jobtype.value ))?</p>
 		</div>  
-
 		<div class="container">
 			<input type="hidden" id="jobType" name="jobType" value="(( jobtype ))">
 			<button type="submit" class="btn btn-primary btn-lg btn-block">Ja, det har jag</button>
 		</div>  
 	</form>
 </div>
+(% endblock %)
 
-<div class="container fixed-bottom">
-  	<a href="/users/(( user.name ))" class="btn btn-secondary btn-lg btn-block">Gå tillbaka</a>
-</div>
 
+(% block footer_content %)
+  	<a href="/users/(( user.name ))" class="btn btn-link btn-lg btn-block">Gå tillbaka</a>
 (% endblock %)

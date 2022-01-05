@@ -1,36 +1,25 @@
 (% extends "base-nav.html" %)
 
-(% block head_title %) Tackar (% endblock %)
 
 (% block page_content %)
-
-<div class="container centered">
-  
+<div class="container">
 	<div class="container text-center">  
 		<h1 class="display-1"><i class="fas fa-medal"></i></h1>
 		<h1><span class="text-capitalize">(( user.name ))'s</span> belöningar</h1>
 	</div>
-
-	<div class="container">
-		<p class="lead">
-	  		Du har fått (( user.awards|length )) belöningar.
-		</p>
-	</div>
-
 	<div class="container">  
 		(% if user.awards|length > 0 %)
-		<h4>Mina belöningar</h4>
+		<h4>(( user.awards|length )) belöningar</h4>
 		(% endif %)
 
 		(% for award in user.awards %)
 		<p class="lead">(( award.created ))</p>
 		(% endfor %)
 	</div>  
-
 </div>
+(% endblock %)
 
-<div class="container fixed-bottom">
-  	<a href="/users/(( user.name ))" class="btn btn-secondary btn-lg btn-block">Gå tillbaka</a>
-</div>
 
+(% block footer_content %)
+<a href="/users/(( user.name ))" class="btn btn-link btn-lg btn-block">Gå tillbaka</a>
 (% endblock %)

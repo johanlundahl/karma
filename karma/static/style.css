@@ -1,3 +1,5 @@
+html,body{height:100%;}
+
 /* Typography */
 
 .logo {
@@ -13,19 +15,19 @@
 
 a:link {
     /*color: black;*/
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 a:visited {
     /*color: black;*/
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 a:hover {
     /*color: black;*/
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 a:active {
     /*color: black;*/
-    text-decoration: none;
+    /*text-decoration: none;*/
 }
 
 .centered {
@@ -35,6 +37,9 @@ a:active {
   transform: translate(-50%, -50%);
 }
 
+.my-page-title {
+  margin-bottom: 30px;
+}
 
 .my-topnav a {
   color: #444444; /*#f2f2f2*/
@@ -98,6 +103,23 @@ nav {
   border-bottom: 1px solid lightgray;
   padding: 5px;
   padding-left: 20px;
+}
+
+
+.bg-yellow {
+  background: yellow;
+}
+
+.bg-purple {
+  background: purple;
+}
+
+.bg-beige {
+  background: beige;
+}
+
+.bg-pink {
+  background: pink;
 }
 
 
