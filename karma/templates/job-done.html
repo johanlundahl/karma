@@ -2,14 +2,20 @@
 
 
 (% block page_content %)
+<script>
+	setTimeout(function(){
+		window.location.href = '(( next_url ))';
+	}, 2000);
+</script>
 <div class="container centered">
-	<div class="container text-center">  
-		<h1 class="display-1"><i class="far fa-kiss-wink-heart"></i></h1>
-		<h1>Tack (( user_name(user) ))!</h1>
-	</div>  
-	<div class="container">
-		<p class="lead">Vad snällt att du hjälper till. Det är vi jätteglada för.</p>
-	</div>  
+	<div class="container text-center"> 
+		<h1 class="display-1">
+			<span class="fa-stack" style="vertical-align: top;">
+			  <i class="fas fa-circle fa-stack-2x my-blue-bright"></i>
+			  <span class="fas fa-stack-1x my-blue-dark">(( thanks_icon() ))</span>
+			</span>
+		</h1> 
+	</div>
 </div>
 (% endblock %)
 

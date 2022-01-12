@@ -2,8 +2,8 @@
 
 
 (% block body_content %)
-    <div class="h-100 d-flex flex-column px-2">
-      <div class="flex-column justify-content-center px-2 flex-grow-1 overflow-auto">
+    <div class="h-100 d-flex flex-column ">
+      <div class="flex-column justify-content-center overflow-auto">
 
         <!-- menu -->
         <nav class="navbar sticky-top bg-white navbar-default my-navbar">
@@ -23,12 +23,14 @@
             </div>
           </div>
         </nav>
+      </div>
 
+      <div class="flex-column justify-content-center px-2 flex-grow-1 overflow-auto my-page">
         <!-- main content of page -->
         (% block page_content %) (% endblock %)
 
       </div>
-      <div class="flex-column justify-content-center px-2" style="margin-bottom: 5px;">
+      <div class="flex-column justify-content-center px-2 my-footer" style="margin-bottom: 10px;">
         <div class="p-0">
 
           <!-- footer of page -->

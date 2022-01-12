@@ -166,7 +166,8 @@ def jobs(username):
 def job_added(username):
     with db:
         user = db.get(User).where(User.name, username).first()
-        return render_template('job-done.html', user=user)
+        return render_template('job-done.html', user=user, 
+                               next_url=f'/users/{user.name}')
 
 
 @app.route('/users/<username>/jobs/<jobtype:job>', methods=['GET'])

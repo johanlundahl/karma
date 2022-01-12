@@ -3,9 +3,13 @@
 
 (% block page_content %)
 <div class="container">
-	<div class="container text-center">  
-		<h1 class="display-1">(( job_icon() ))</h1>
-		<h1></h1>
+	<div class="container text-center">
+		<h1 class="display-1">
+			<span class="fa-stack" style="vertical-align: top;">
+			  <i class="fas fa-circle fa-stack-2x my-blue-bright"></i>
+			  <span class="fas fa-stack-1x my-blue-dark">(( job_icon() ))</span>
+			</span>
+		</h1>
 	</div>  
 	<div class="container text-center">
 		<p class="lead"><span class="text-capitalize">(( user.name ))</span>, vad är det du har gjort?</p>

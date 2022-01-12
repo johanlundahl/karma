@@ -5,7 +5,7 @@
 
 
 (% macro user_score(user) -%)
-<span><i class="far fa-heart"></i> (( user.score ))</span>
+<span>(( user.score )) <i class="far fa-heart"></i></span>
 (%- endmacro %)
 
 
@@ -19,12 +19,17 @@
 
 
 (% macro job_icon(user) -%)
-<i class="fas fa-people-carry"></i>
+<i class="fas fa-question"></i>
 (%- endmacro %)
 
 
 (% macro award_icon(user) -%)
 <i class="fas fa-mobile-alt"></i>
+(%- endmacro %)
+
+
+(% macro thanks_icon() -%)
+<i class="far fa-kiss-wink-heart fa-beat"></i>
 (%- endmacro %)
 
 

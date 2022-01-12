@@ -4,26 +4,24 @@
 (% block page_content %)
 <div class="container">
 	<div class="container text-center my-title">  
-		<h1 class="display-1">(( status_icon(user) ))</h1>
+		
+		<h1 class="display-1">
+			<span class="fa-stack" style="vertical-align: top;">
+			  <i class="fas fa-circle fa-stack-2x my-blue-bright"></i>
+			  <span class="fas fa-stack-1x my-blue-dark">(( status_icon(user) ))</span>
+			</span>
+		</h1>
 	  	<h1 class="my-page-title">(( user_name(user) ))'s sida</span></h1>
 	</div>
 
 	<div class="container">
 	  	<div class="row">
-    		<div class="col text-center">
+    		<div class="col-5 text-center">
     			<h1>(( user_score(user) ))</h1>
     		</div>
-    		<div class="col text-center">
-    			<h1>(( user_awards(user) ))</h1>
-    		</div>	
-    	</div>
-    	<div class="row">
     		<div class="col">
     			<p>Hjärtan som du kan byta mot skärmtid.</p>
-    		</div>
-    		<div class="col">
-    			<p>Antal skärmtid som du fått.</p>
-    		</div>
+    		</div>	
     	</div>
 	</div>
 </div>
